@@ -1,6 +1,6 @@
 # Meal-Prepper!
 'Ruby version : 3.1.2'
-Building a web app around CSV datasets for people wanting to see a wide assortment of meals
+Meal Prepper is a web app built with Ruby on Rails, displaying a catalog of different meal options for users!
 
 ## Models
 Meal
@@ -24,15 +24,15 @@ Supplier
 - contact_info (string)
 
 ## Routes
-GET /               (Home Page)
-GET /meals          (Show all Meals)
-GET /meals/:id      (Show a Meal by ID)
-GET /recipes        (Show all Recipes)
-GET /recipes/:id    (Show a Recipe by ID)
-GET /ingredients    (Show all Ingredients)
-GET /ingredients/:id (Show an Ingredient by ID)
-GET /suppliers      (Show all Suppliers)
-GET /suppliers/:id  (Show a Supplier by ID)
+- GET /               (Home Page)
+- GET /meals          (Show all Meals)
+- GET /meals/:id      (Show a Meal by ID)
+- GET /recipes        (Show all Recipes)
+- GET /recipes/:id    (Show a Recipe by ID)
+- GET /ingredients    (Show all Ingredients)
+- GET /ingredients/:id (Show an Ingredient by ID)
+- GET /suppliers      (Show all Suppliers)
+- GET /suppliers/:id  (Show a Supplier by ID)
 
 ## Controllers
 - HomeController - index
