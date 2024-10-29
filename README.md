@@ -1,6 +1,5 @@
 # Meal-Prepper!
-* Ruby version : 3.1.2
-
+'Ruby version : 3.1.2'
 Building a web app around CSV datasets for people wanting to see a wide assortment of meals
 
 ## Models
