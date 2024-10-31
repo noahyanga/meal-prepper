@@ -21,6 +21,16 @@ Store
 - name (string, present, unique)
 - address (string)
 
+
+### Join Tables
+RecipeIngredient
+- recipe_id** (integer, FK)
+- ingredient_id** (integer, FK)
+
+StoreIngredient
+- store_id** (integer, FK)
+- ingredient_id** (integer, FK)
+
 ## Routes
 - GET /               (Home Page)
 - GET /meals          (Show all Meals)
