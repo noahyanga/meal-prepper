@@ -17,10 +17,9 @@ Ingredient
 - name (string, present, unique)
 - measurement_unit (string, present)
 
-Supplier
+Store
 - name (string, present, unique)
 - address (string)
-- contact_info (string)
 
 ## Routes
 - GET /               (Home Page)
