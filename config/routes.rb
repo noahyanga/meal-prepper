@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "store/index"
+  get "store/show"
+  get "ingredient/index"
+  get "ingredient/show"
+  get "recipe/index"
+  get "recipe/show"
   get "meal/index"
   get "meal/show"
   get "home/index"
