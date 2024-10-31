@@ -30,12 +30,12 @@ Supplier
 - GET /recipes/:id    (Show a Recipe by ID)
 - GET /ingredients    (Show all Ingredients)
 - GET /ingredients/:id (Show an Ingredient by ID)
-- GET /suppliers      (Show all Suppliers)
-- GET /suppliers/:id  (Show a Supplier by ID)
+- GET /stores      (Show all Stores)
+- GET /stores/:id  (Show a Store by ID)
 
 ## Controllers
 - HomeController - index
 - MealsController - index, show
 - RecipesController - index, show
 - IngredientsController - index, show
-- SuppliersController - index, show
+- StoresController - index, show
