@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   get "ingredient/show"
   get "recipe/index"
   get "recipe/show"
-  get "meal/index"
-  get "meal/show"
+  get "meals/index"
+  get "meals/show"
   
   resources :meals, only: %i[index show] do
     collection do
-      get 'search', to: 'meal#search'
+      get 'search', to: 'meals#search'
     end
   end
   

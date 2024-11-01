@@ -42,7 +42,6 @@
         <% @meals.each do |meal| %>
           <li>
             <%= link_to meal.name, meal_path(meal) %>
-            <em>(<%= meal.description %>)</em>
           </li>
         <% end %>
       <% else %>

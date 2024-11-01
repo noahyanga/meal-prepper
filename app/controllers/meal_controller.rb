@@ -1,4 +1,4 @@
-class MealController < ApplicationController
+class MealsController < ApplicationController
   def index
     @meals = Meal.all.limit(10) 
     @top_meals = Meal.order(created_at: :desc).limit(5)
