@@ -5,27 +5,19 @@
   <div class="section">
     <h2 class="title is-3">Top 5 Popular Recipes</h2>
     <ol>
-      <% if @top_recipes.present? %>
         <% @top_recipes.each do |recipe| %>
           <li>
             <%= link_to recipe.title, recipe_path(recipe) %>
             <em>(<%= recipe.instructions %>)</em>
           </li>
         <% end %>
-      <% else %>
-        <li>No popular recipes available.</li>
-      <% end %>
     </ol>
   </div>
 
-<% if @recipes.present? %>
   <ul>
     <% @recipes.each do |recipe| %>
       <li>
         <%= link_to recipe.title, recipe_path(recipe) %> 
       </li>
-    <% end %>
   </ul>
-<% else %>
-  <p>No recipes found.</p>
 <% end %>
