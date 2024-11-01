@@ -1,0 +1,9 @@
+<p class="mb-5">
+  Found <%= pluralize(@meals.count, 'Meal') %> when searching for: <%= params[:query] %>
+</p>
+
+<ul>
+  <% @meals.each do |meal| %>
+    <li><%= link_to meal.name, meal_path(meal) %></li>
+  <% end %>
+</ul>

@@ -1,50 +1,52 @@
 <div class="section">
   <h1 class="title is-1">Meals</h1>
 
-    <%= link_to '🏠 Back to Home', root_path, class: 'button is-link' %>
+  <%= link_to '🏠 Back to Home', root_path, class: 'button is-link' %>
 
-  <div class="search-bar">
-    <h2 class="title is-3">Search Meals</h2>
-    <%= form_with url: meals_path, method: :get, local: true do %>
-      <div class="field">
-        <div class="control">
-          <%= text_field_tag :query, params[:query], placeholder: "Search by meal name...", class: 'input' %>
-        </div>
+<div class="search-bar">
+  <h2 class="title is-3">Search Meals</h2>
+  <%= form_with url: search_meals_path, method: :get, local: true do %>
+    <div class="field">
+      <div class="control">
+        <%= text_field_tag :query, params[:query], placeholder: "Search by meal name...", class: 'input' %>
       </div>
-      <div class="field">
-        <div class="control">
-          <%= submit_tag "Search", class: 'button is-info' %>
-        </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= submit_tag "Search", class: 'button is-info' %>
       </div>
-    <% end %>
-  </div>
-
-
-<div class="section">
-  <h2 class="title is-3">Top 5 Popular Meals</h2>
-  <ol>
-    <% if @top_meals.present? %>
-      <% @top_meals.each do |meal| %>
-        <li>
-          <%= link_to meal.name, meal_path(meal) %>
-          <em>(<%= meal.description %>)</em>
-        </li>
-      <% end %>
-    <% else %>
-      <li>No popular meals available.</li>
-    <% end %>
-  </ol>
+    </div>
+  <% end %>
 </div>
 
+  <div class="section">
+    <h2 class="title is-3">Top 5 Popular Meals</h2>
+    <ol>
+      <% if @top_meals.present? %>
+        <% @top_meals.each do |meal| %>
+          <li>
+            <%= link_to meal.name, meal_path(meal) %>
+            <em>(<%= meal.description %>)</em>
+          </li>
+        <% end %>
+      <% else %>
+        <li>No popular meals available.</li>
+      <% end %>
+    </ol>
+  </div>
 
   <div class="all-meals">
     <h2 class="title is-3">All Meals</h2>
     <ol>
-      <% @meals.each do |meal| %>
-        <li>
-          <%= link_to meal.name, meal_path(meal) %>
-          <em>(<%= meal.description %>)</em>
-        </li>
+      <% if @meals.present? %>
+        <% @meals.each do |meal| %>
+          <li>
+            <%= link_to meal.name, meal_path(meal) %>
+            <em>(<%= meal.description %>)</em>
+          </li>
+        <% end %>
+      <% else %>
+        <li>No meals found.</li>
       <% end %>
     </ol>
   </div>

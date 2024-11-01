@@ -7,4 +7,12 @@ class MealController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
   end
+
+  def search
+    Rails.logger.debug("Search parameters: #{params[:query]}")
+    wildcard_search = "%#{params[:query]}%"
+    @meals = Meal.where("name LIKE ?", wildcard_search)
+    
+    render :search
+  end
 end
