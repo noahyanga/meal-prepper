@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "recipes/show"
   get "meals/index"
   get "meals/show"
+  get 'about', to: 'about#index'
   
   resources :meals, only: %i[index show] do
     collection do

@@ -14,10 +14,17 @@
     </ol>
   </div>
 
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <li>
-        <%= link_to recipe.title, recipe_path(recipe) %> 
-      </li>
-  </ul>
-<% end %>
+  <div class="all-recipes">
+    <h2 class="title is-3">All Recipes</h2>
+    <ol>
+      <% if @recipes.present? %>
+        <% @recipes.each do |recipe| %>
+          <li>
+            <%= link_to recipe.title, recipe_path(recipe) %>
+          </li>
+        <% end %>
+      <% else %>
+        <li>No meals found.</li>
+      <% end %>
+    </ol>
+  </div>
