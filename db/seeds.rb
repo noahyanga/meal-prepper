@@ -8,49 +8,77 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require 'faker'
 require 'csv'
 
-CSV.open("meals.csv", "w") do |csv|
-  csv << ["id", "name", "description"]
-  10.times do |i|
-    csv << [i + 1, Faker::Food.dish, Faker::Food.description]
+# Clear previous data
+Meal.destroy_all
+Recipe.destroy_all
+Ingredient.destroy_all
+Store.destroy_all
+RecipeIngredient.destroy_all
+StoreIngredient.destroy_all
+
+# hold created records
+meals = []
+recipes = []
+ingredients = []
+stores = []
+
+CSV.foreach(Rails.root.join('db', 'meals.csv'), headers: true) do |row|
+  meal = Meal.create!(
+    name: row['name'],
+    description: row['description']
+  )
+  meals << meal
+end
+
+CSV.foreach(Rails.root.join('db', 'ingredients.csv'), headers: true) do |row|
+  ingredient = Ingredient.create!(
+    name: row['name'],
+    measurement_unit: row['measurement_unit']
+  )
+  ingredients << ingredient
+end
+
+CSV.foreach(Rails.root.join('db', 'recipes.csv'), headers: true) do |row|
+  recipe = Recipe.create!(
+    title: row['title'],
+    instructions: row['instructions'],
+    meal_id: row['meal_id']
+  )
+  recipes << recipe
+end
+
+CSV.foreach(Rails.root.join('db', 'stores.csv'), headers: true) do |row|
+  store = Store.create!(
+    name: row['name']
+  )
+  stores << store
+end
+
+CSV.foreach(Rails.root.join('db', 'recipe_ingredients.csv'), headers: true) do |row|
+  recipe_id = row['recipe_id'].to_i
+  ingredient_id = row['ingredient_id'].to_i
+
+  if recipes.map(&:id).include?(recipe_id) && ingredients.map(&:id).include?(ingredient_id)
+    RecipeIngredient.create!(
+      recipe_id: recipe_id,
+      ingredient_id: ingredient_id
+    )
   end
 end
 
-CSV.open("ingredients.csv", "w") do |csv|
-  csv << ["id", "name", "measurement_unit"]
-  15.times do |i|
-    csv << [i + 1, Faker::Food.ingredient, Faker::Food.metric_measurement]
+CSV.foreach(Rails.root.join('db', 'store_ingredients.csv'), headers: true) do |row|
+  store_id = row['store_id'].to_i
+  ingredient_id = row['ingredient_id'].to_i
+
+  if stores.map(&:id).include?(store_id) && ingredients.map(&:id).include?(ingredient_id)
+    StoreIngredient.create!(
+      store_id: store_id,
+      ingredient_id: ingredient_id
+    )
   end
 end
 
-CSV.open("recipes.csv", "w") do |csv|
-  csv << ["id", "title", "instructions", "meal_id"]
-  20.times do |i|
-    csv << [i + 1, Faker::Food.dish, Faker::Lorem.paragraph, rand(1..10)]
-  end
-end
+puts "Database seeded successfully."
 
-CSV.open("stores.csv", "w") do |csv|
-  csv << ["id", "name"]
-  5.times do |i|
-    csv << [i + 1, Faker::Company.name]
-  end
-end
-
-CSV.open("recipe_ingredients.csv", "w") do |csv|
-  csv << ["recipe_id", "ingredient_id"]
-  20.times do
-    csv << [rand(1..20), rand(1..15)]
-  end
-end
-
-CSV.open("store_ingredients.csv", "w") do |csv|
-  csv << ["store_id", "ingredient_id"]
-  20.times do
-    csv << [rand(1..5), rand(1..15)]
-  end
-end
-
-puts "CSV files generated successfully"
