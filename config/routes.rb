@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get "home/index"
-  get "store/index"
-  get "store/show"
-  get "ingredient/index"
-  get "ingredient/show"
-  get "recipe/index"
-  get "recipe/show"
+  get "stores/index"
+  get "stores/show"
+  get "ingredients/index"
+  get "ingredients/show"
+  get "recipes/index"
+  get "recipes/show"
   get "meals/index"
   get "meals/show"
   

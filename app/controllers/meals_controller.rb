@@ -5,7 +5,7 @@ class MealsController < ApplicationController
   end
 
   def show
-    @meal = Meal.find(params[:id])
+    @meals = Meal.find(params[:id])
   end
 
   def search
